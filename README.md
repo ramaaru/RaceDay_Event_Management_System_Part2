@@ -41,7 +41,7 @@ Technology stack
 - Swagger/OpenAPI for API exploration
 - xUnit for automated tests
 - GitHub Actions workflow for restore, build, and test automation
-Implemented functionality
+## Implemented functionality
 - Account registration and login
 - Password hashing and password verification through PasswordService
 - Session values for the authenticated user's ID and role
@@ -54,17 +54,27 @@ Implemented functionality
 - Event route management
 - Event weather records
 - Role-based checks to prevent participants from using organiser-only operations
-Authentication and authorisation behaviour
+## Authentication and authorisation behaviour
 The API uses ASP.NET Core session state. A successful login stores values such as UserID and Role in the session. Protected controllers use the shared SessionControllerBase to check whether a user is logged in and whether the user's role is permitted.
-Expected access-control behaviour:
+# Expected access-control behaviour:
 - An unauthenticated request to an organiser-only operation should receive 401 Unauthorized.
 - An authenticated Participant attempting an Organiser-only operation should receive 403 Forbidden.
 - An authenticated Organiser should be allowed to create and manage their own events.
 - An authenticated Participant should be allowed to enrol in an available event category, subject to validation and duplicate-enrolment rules.
 The session cookie must be retained and sent with subsequent requests. When running integration tests, each client should log in and then use the same cookie-aware client for protected requests.
-Database and Entity Framework Core updates
+# Database and Entity Framework Core updates
 - RaceDayDbContext registers the application's entities using DbSet properties.
 - Fluent configuration defines unique email addresses, required/max-length fields, decimal precision, and entity relationships.
 - EventEnrolment uses EnrolmentID as its primary key.
 - The RaceDay route model is aliased as RaceDayRoute where needed to avoid a naming conflict with Microsoft.AspNetCore.Routing.Route.
 - SQL Server is configured for normal application use; the automated test factory replaces the context with an EF Core InMemory database so tests do not depend on a local SQL Server instance.
+
+## Change summary
+Part 1
+- Documented system purpose, major entities, relationships, SQL database design, and proposed API endpoints.
+- Defined Participant and Organiser access expectations.
+Part 2 updates
+- Documented the .NET 8 ASP.NET Core API, EF Core database context, session-based login, and role checks.
+- Recorded the EventEnrolment.EnrolmentID primary-key configuration.
+- Documented the RaceDayRoute alias used to resolve the Route type-name ambiguity.
+- Added build/test commands, integration-test guidance, and GitHub Actions notes.
