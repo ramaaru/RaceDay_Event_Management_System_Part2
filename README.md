@@ -78,3 +78,5 @@ Part 2 updates
 - Recorded the EventEnrolment.EnrolmentID primary-key configuration.
 - Documented the RaceDayRoute alias used to resolve the Route type-name ambiguity.
 - Added build/test commands, integration-test guidance, and GitHub Actions notes.
+
+  ## YouTuBe LinK :  https://youtu.be/rEsaiOlUY8E?si=wjFgOHWhCzjnS7tu
